@@ -9,8 +9,6 @@ import { ChatService } from './services/chat.service';
 })
 export class AppComponent implements OnInit{
 
-  title = 'basico';
-
   constructor( 
     private websocketService: WebsocketService,
     public charService: ChatService
@@ -18,6 +16,15 @@ export class AppComponent implements OnInit{
 
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.charService.getMessagerPrivate()
+      .subscribe( msg=>{
+
+        console.log( msg )
+
+      })
+
+  }
 
 }

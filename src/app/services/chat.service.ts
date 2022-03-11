@@ -13,7 +13,7 @@ export class ChatService {
   sendMesagge( mensaje: string ){
 
     const peyload = {
-      de: 'Luis',
+      de: this.wsService.getUsuario().nombre,
       cuerpo: mensaje
     };
 
@@ -24,6 +24,12 @@ export class ChatService {
   getMessages(){
 
     return this.wsService.listen( 'mensaje-nuevo' );
+
+  }
+
+  getMessagerPrivate(){
+
+    return this.wsService.listen('mensaje-privado')
 
   }
 
