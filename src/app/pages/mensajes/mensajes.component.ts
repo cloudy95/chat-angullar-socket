@@ -12,7 +12,14 @@ export class MensajesComponent implements OnInit {
 
   ngOnInit(): void {
     console.log( this.wsService.usuario.nombre )
+
+
   }
 
+  salir(){
+
+    this.wsService.logoutWs();
+
+  }
 
 }

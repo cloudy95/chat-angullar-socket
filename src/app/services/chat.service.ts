@@ -12,25 +12,36 @@ export class ChatService {
 
   sendMesagge( mensaje: string ){
 
-    const peyload = {
+    const payload = {
       de: this.wsService.getUsuario().nombre,
       cuerpo: mensaje
     };
-
-    this.wsService.emit( 'mensaje', peyload )
+    //Emitir
+    this.wsService.emit( 'mensaje', payload )
 
   }
-
+ //Escuchar
   getMessages(){
 
     return this.wsService.listen( 'mensaje-nuevo' );
 
   }
 
+  //Escuchar
   getMessagerPrivate(){
 
     return this.wsService.listen('mensaje-privado')
 
+  }
+ //Escuchar
+  getUsuariosActivos(){
+
+    return this.wsService.listen( 'usuarios-activos' )
+
+  }
+ //Emitir
+  emitirUsuariosActivos(){
+    return this.wsService.emit( 'obtener-usuarios' );
   }
 
 }
